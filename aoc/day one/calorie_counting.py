@@ -1,7 +1,7 @@
 # --- Day 1: Calorie Counting ---
 
 lines = []
-with open("input") as f:
+with open("input.txt") as f:
     lines = [line.rstrip("\n") for line in f]
 
 
