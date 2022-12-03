@@ -21,15 +21,11 @@ def won(me, op):
 
 
 def winners_score(op):
-    if op == 3:
-        return 1
-    return op + 1
+    return op + 1 % 3
 
 
 def losers_score(op):
-    if op == 1:
-        return 3
-    return op - 1
+    return op - 1 % 3
 
 
 def p1():
@@ -79,6 +75,3 @@ def p2():
 
     print(my_score)
     print(op_score)
-
-
-p2()

@@ -14,13 +14,12 @@ def priority(item):
 def same(f, s):
     f = list(f)
     s = list(s)
-    return priority(list(set(f).intersection(s))[0])
+    return list(set(f).intersection(s))
 
 
 def badge(group):
     group = [list(r) for r in group]
-    common = list(set(group[0]).intersection(group[1]))
-    badge = list(set(group[2]).intersection(common))
+    badge = same(same(group[0], group[1]), group[2])
     return priority(badge[0])
 
 
@@ -28,7 +27,7 @@ def p1():
     priority_sum = 0
     for line in lines:
         f, s = line[: len(line) // 2], line[len(line) // 2 :]
-        priority_sum += same(f, s)
+        priority_sum += priority(same(f, s)[0])
 
     print(priority_sum)
 
@@ -42,8 +41,7 @@ def p2():
             cur_group = [line]
         else:
             cur_group.append(line)
-    if len(cur_group) == 3:
-        priority_sum += badge(cur_group)
-        cur_group = []
+
+    priority_sum += badge(cur_group)
 
     print(priority_sum)
