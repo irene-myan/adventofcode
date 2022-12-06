@@ -18,6 +18,12 @@ stacks = [
 ]
 
 
+def parse_stacks():
+    for i in range(len(lines)):
+        if lines[i].split(" ")[0] == "1":
+            print(lines[i])
+
+
 def move(fro, to):
     stacks[to - 1].append(stacks[fro - 1][-1])
     stacks[fro - 1].pop()
@@ -30,6 +36,7 @@ def move_many(num, fro, to):
 
 
 def p1():
+
     for line in lines:
         if len(line) > 1 and line[0] == "m":
             _, num, _, fr, _, to = line.split(" ")
